@@ -1,4 +1,4 @@
-const NotFoundMsg = 'id не существует';
+const NotFoundMsg = 'Ресурс не существует';
 
 class NotFoundError extends Error {
   constructor(message) {
