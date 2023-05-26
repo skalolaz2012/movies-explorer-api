@@ -5,7 +5,7 @@ const {
   validateLogin,
   validateCreateUser,
 } = require('../utils/validators');
-const auth = require('./middlewares/auth');
+const auth = require('../middlewares/auth');
 const { login, createUser } = require('../controllers/auth');
 const myError = require('../errors/errors');
 

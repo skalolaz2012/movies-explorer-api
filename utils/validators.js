@@ -37,34 +37,58 @@ const validateEditUser = {
 const validateUserId = {
   params: Joi.object({
     userId: Joi.string().required().hex().length(24)
-      .message('Id указан неверно'),
+    .messages({
+      'any.required': 'Id указан неверно',
+    }),
   }),
 };
 
 const validateDataOfMovies = {
   body: Joi.object({
     country: Joi.string().required()
-      .message('Поле "Страна" обязательное!'),
+    .messages({
+      'any.required': 'Поле Страна обязательное!',
+    }),
     director: Joi.string().required()
-      .message('Поле "Режиссёр" обязательное!'),
+    .messages({
+      'any.required': 'Поле "Режиссёр" обязательное!',
+    }),
     duration: Joi.string().required()
-      .message('Поле "Продолжительность" обязательное!'),
+    .messages({
+      'any.required': 'Поле "Продолжительность" обязательное!',
+    }),
     year: Joi.string().required()
-      .message('Поле "Год выпуска" обязательное!'),
+    .messages({
+      'any.required': 'Поле "Год выпуска" обязательное!',
+    }),
     description: Joi.string().required()
-      .message('Поле "Описание" обязательное!'),
+    .messages({
+      'any.required': 'Поле "Описание" обязательное!',
+    }),
     image: Joi.string().required().regex(urlLinkPattern)
-      .message('Должна быть ссылка!'),
+    .messages({
+      'any.required': 'Должна быть ссылка!',
+    }),
     trailerLink: Joi.string().required().regex(urlLinkPattern)
-      .message('Должна быть ссылка!'),
+    .messages({
+      'any.required': 'Должна быть ссылка!',
+    }),
     thumbnail: Joi.string().required().regex(urlLinkPattern)
-      .message('Должна быть ссылка!'),
+    .messages({
+      'any.required': 'Должна быть ссылка!',
+    }),
     movieId: Joi.string().required()
-      .message('Поле "Id" обязательное!'),
+    .messages({
+      'any.required': 'Поле "Id" обязательное!',
+    }),
     nameRU: Joi.string().required()
-      .message('Поле "Название на русском" обязательное!'),
+    .messages({
+      'any.required': 'Поле "Название на русском" обязательное!',
+    }),
     nameEN: Joi.string().required()
-      .message('Поле "Название на английском" обязательное!'),
+    .messages({
+      'any.required': 'Поле "Название на английском" обязательное!',
+    }),
     link: Joi.string().required().regex(urlLinkPattern).messages({
       'string.regexMsg': 'Некорректная ссылка на картинку',
       'any.required': 'Ссылка не может быть пустой',
@@ -72,10 +96,12 @@ const validateDataOfMovies = {
   }),
 };
 
-const validateCardId = {
+const validateMovieId = {
   params: Joi.object({
     cardId: Joi.string().required().hex().length(24)
-      .message('Id указан неверно'),
+    .messages({
+      'any.required': 'Id указан неверно',
+    }),
   }),
 };
 
@@ -97,6 +123,6 @@ module.exports = {
   validateEditUser,
   validateUserId,
   validateDataOfMovies,
-  validateCardId,
+  validateMovieId,
   validateLogin,
 };

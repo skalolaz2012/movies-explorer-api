@@ -1,15 +1,14 @@
 /* сервер если запустился, то слушает порты (ручки). На бэке приложение запускает нода */
-require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const cors = require('./middlewares/cors');
 const { errors } = require('celebrate');
 
 const defaultError = require('./middlewares/defaultError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
-const rateLimit = require('./middlewares/rateLimit');
+const { limiter } = require('./middlewares/rateLimit');
 
 const {
   PORT = 3000,
@@ -26,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors);
-app.use(rateLimit);
+app.use(limiter);
 
 app.use(requestLogger); // подключаем логгер запросов до роутов
 
