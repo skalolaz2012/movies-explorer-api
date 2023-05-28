@@ -23,5 +23,5 @@
 [* Бэклог проекта](https://github.com/users/skalolaz2012/projects/1/views/1)
 * Адреса сервера
   * Публичный IP адрес: 158.160.57.173
-  [* Frontend](https://diploma-saperov.nomoredomains.monster)
-  [* Backend](https://api.diploma-saperov.nomoredomains.monster)
+  [* Frontend](https://diploma-saperov.nomoredomains.rocks)
+  [* Backend](https://api.diploma-saperov.nomoredomains.rocks)
