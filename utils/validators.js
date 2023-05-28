@@ -36,9 +36,9 @@ const validateEditUser = {
 
 const validateUserId = {
   params: Joi.object({
-    userId: Joi.string().required().hex().length(24)
+    userId: Joi.string().hex().length(24)
     .messages({
-      'any.required': 'Id указан неверно',
+      'any.length': 'Id указан неверно',
     }),
   }),
 };
@@ -88,10 +88,6 @@ const validateDataOfMovies = {
     nameEN: Joi.string().required()
     .messages({
       'any.required': 'Поле "Название на английском" обязательное!',
-    }),
-    link: Joi.string().required().regex(urlLinkPattern).messages({
-      'string.regexMsg': 'Некорректная ссылка на картинку',
-      'any.required': 'Ссылка не может быть пустой',
     }),
   }),
 };
