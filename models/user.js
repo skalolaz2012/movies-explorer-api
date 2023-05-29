@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
-const bcrypt = require('bcryptjs');
-const myError = require('../errors/errors');
+const mongoose = require("mongoose");
+const validator = require("validator");
+const bcrypt = require("bcryptjs");
+const myError = require("../errors");
 
 const userSchema = new mongoose.Schema(
   {
@@ -25,23 +25,23 @@ const userSchema = new mongoose.Schema(
       maxlength: [30, 'Максимальная длина поля "name" - 30'],
     },
   },
-  { versionKey: false },
+  { versionKey: false }
 );
 
 userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email })
-    .select('+password')
+    .select("+password")
     .then((user) => {
       if (!user) {
-        return Promise.reject(new myError.AuthError('Неправильные почта или пароль'));
+        return Promise.reject(new myError.AuthError(myError.NeedAuthMsg));
       }
       return bcrypt.compare(password, user.password).then((matched) => {
         if (!matched) {
-          return Promise.reject(new myError.AuthError('Неправильные почта или пароль'));
+          return Promise.reject(new myError.AuthError(myError.AuthMsg));
         }
         return user; // теперь user доступен
       });
     });
 };
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model("user", userSchema);

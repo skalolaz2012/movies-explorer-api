@@ -4,6 +4,8 @@ const { BadRequestError, BadRequestMsg } = require('./bad-request-error');
 const { ForbiddenError, ForbiddenMsg } = require('./forbidden-error');
 const { NotFoundError, NotFoundMsg } = require('./not-found-error');
 
+const SuccessDel = 'удалено успешно!';
+
 module.exports = {
   AlreadyExistError,
   AlreadyExistMsg,
@@ -16,4 +18,5 @@ module.exports = {
   ForbiddenMsg,
   NotFoundError,
   NotFoundMsg,
+  SuccessDel,
 };

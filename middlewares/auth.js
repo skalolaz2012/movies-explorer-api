@@ -1,14 +1,14 @@
-require('dotenv').config();
-const jwt = require('jsonwebtoken');
-const myError = require('../errors/errors');
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
+const myError = require("../errors");
 
-const extractBearerToken = (header) => header.replace('Bearer ', '');
+const extractBearerToken = (header) => header.replace("Bearer ", "");
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
-  if (!authorization || !authorization.startsWith('Bearer ')) {
+  if (!authorization || !authorization.startsWith("Bearer ")) {
     return next(new myError.AuthError(myError.NeedAuthMsg));
   }
 
@@ -16,7 +16,10 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
+    payload = jwt.verify(
+      token,
+      NODE_ENV === "production" ? JWT_SECRET : "dev-secret"
+    );
   } catch (err) {
     return next(new myError.AuthError(myError.AuthMsg));
   }

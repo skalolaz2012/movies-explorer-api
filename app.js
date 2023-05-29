@@ -7,19 +7,20 @@ const { errors } = require('celebrate');
 const cors = require('./middlewares/cors');
 
 const defaultError = require('./middlewares/defaultError');
-const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { limiter } = require('./middlewares/rateLimit');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { mongoDB } = require('./utils/constants');
 
 const {
   PORT = 3000,
   BASE_PATH,
-  DB
+  DB,
 } = process.env;
 
 const app = express();
 const routes = require('./routes/index');
 
-mongoose.connect(DB || 'mongodb://127.0.0.1/bitfilmsdb');
+mongoose.connect(DB || mongoDB);
 
 /* метод use позволяет использовать middleware */
 app.use(bodyParser.json());

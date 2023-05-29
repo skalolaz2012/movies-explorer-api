@@ -1,6 +1,6 @@
 /* экспортируем модель со схемой в контроллер */
-const User = require('../models/user');
-const myError = require('../errors/errors');
+const User = require("../models/user");
+const myError = require("../errors");
 
 const checkUser = (user, res) => {
   if (!user) {
@@ -23,7 +23,7 @@ const editUser = (req, res, next) => {
   User.findByIdAndUpdate(
     req.user._id,
     { name, email },
-    { new: true, runValidators: true },
+    { new: true, runValidators: true }
   )
     .then((user) => checkUser(user, res))
     .catch((err) => {
