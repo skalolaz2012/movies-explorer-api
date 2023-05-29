@@ -93,7 +93,7 @@ const validateDataOfMovies = {
 
 const validateMovieId = {
   params: Joi.object({
-    _id: Joi.string().required().hex().length(24)
+    _id: Joi.string().hex().length(24)
       .messages({
         'string.hex': 'Id фильма указан неверно',
       }),
