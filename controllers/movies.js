@@ -28,7 +28,7 @@ const createMovie = (req, res, next) => {
 const deleteMovie = (req, res, next) => {
   const owner = req.user._id;
 
-  Movie.findByIdAndRemove({ _id: req.params.movieId })
+  Movie.findByIdAndRemove({ _id: req.params._id })
     .orFail(() => new myError.NotFoundError(myError.NotFoundMsg))
     .then((movie) => {
       if (!movie) {
