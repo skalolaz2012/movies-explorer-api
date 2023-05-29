@@ -1,6 +1,7 @@
 /* экспортируем модель со схемой в контроллер */
 const Movie = require('../models/movie');
 const myError = require('../errors');
+const { SuccessDel } = require('../utils/constants');
 
 const getMovies = (req, res, next) => {
   Movie.find({ owner: req.user._id })
@@ -28,7 +29,7 @@ const createMovie = (req, res, next) => {
 const deleteMovie = (req, res, next) => {
   const owner = req.user._id;
 
-  Movie.findByIdAndRemove({ _id: req.params._id })
+  Movie.findById({ _id: req.params._id })
     .orFail(() => new myError.NotFoundError(myError.NotFoundMsg))
     .then((movie) => {
       if (!movie) {
@@ -37,7 +38,9 @@ const deleteMovie = (req, res, next) => {
       if (movie.owner.toHexString() !== owner) {
         return next(new myError.ForbiddenError(myError.ForbiddenMsg));
       }
-      return res.send({ message: myError.SuccessDel });
+      return movie.deleteOne()
+      .then(() => res.send({ message: SuccessDel }))
+      .catch(next);
     })
     .catch(next);
 };

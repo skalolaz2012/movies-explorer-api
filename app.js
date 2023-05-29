@@ -7,8 +7,8 @@ const { errors } = require('celebrate');
 const cors = require('./middlewares/cors');
 
 const defaultError = require('./middlewares/defaultError');
-const { limiter } = require('./middlewares/rateLimit');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { limiter } = require('./middlewares/rateLimit');
 const { mongoDB } = require('./utils/constants');
 
 const {
@@ -27,9 +27,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors);
-app.use(limiter);
 
 app.use(requestLogger); // подключаем логгер запросов до роутов
+app.use(limiter);
 
 app.use('/', routes);
 
