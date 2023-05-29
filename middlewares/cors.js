@@ -1,9 +1,9 @@
 // Массив разешённых доменов
 const allowedCors = [
-  'https://diploma-saperov.nomoredomains.monster',
-  'http://diploma-saperov.nomoredomains.monster',
-  'https://api.diploma-saperov.nomoredomains.monster',
-  'http://api.diploma-saperov.nomoredomains.monster',
+  'https://diploma-saperov.nomoredomains.rocks',
+  'http://diploma-saperov.nomoredomains.rocks',
+  'https://api.diploma-saperov.nomoredomains.rocks',
+  'http://api.diploma-saperov.nomoredomains.rocks',
   'localhost:3000',
   'http://localhost:3000',
 ];
