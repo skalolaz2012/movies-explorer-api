@@ -35,7 +35,7 @@ const validateEditUser = {
 
 const validateUserId = {
   params: Joi.object({
-    userId: Joi.string().hex().length(24)
+    _id: Joi.string().hex().length(24)
       .messages({
         'string.hex': 'Id пользователя указан неверно',
       }),
@@ -93,7 +93,7 @@ const validateDataOfMovies = {
 
 const validateMovieId = {
   params: Joi.object({
-    MovieId: Joi.string().required().hex().length(24)
+    _id: Joi.string().required().hex().length(24)
       .messages({
         'string.hex': 'Id фильма указан неверно',
       }),
