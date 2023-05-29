@@ -1,4 +1,5 @@
 const AuthMsg = 'Неверная почта или пароль';
+const NeedAuthMsg = 'Пожалуйста, авторизуйтесь';
 
 class AuthError extends Error {
   constructor(message) {
@@ -7,4 +8,4 @@ class AuthError extends Error {
   }
 }
 
-module.exports = { AuthError, AuthMsg };
+module.exports = { AuthError, AuthMsg, NeedAuthMsg };
