@@ -106,8 +106,7 @@ const validateLogin = {
       'string.email': 'Введите корректный email',
       'any.required': 'Поле email не должно быть пустым!',
     }),
-    password: Joi.string().required().min(6).messages({
-      'string.min': 'Пароль должен быть не менее 6 символов',
+    password: Joi.string().required().messages({
       'any.required': 'Пароль не может быть пустым!',
     }),
   }),
