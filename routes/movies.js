@@ -13,6 +13,6 @@ const {
 
 moviesRouter.get('/', getMovies);
 moviesRouter.post('/', celebrate(validateDataOfMovies), createMovie);
-moviesRouter.delete('/:movieId', celebrate(validateMovieId), deleteMovie);
+moviesRouter.delete('/:_id', celebrate(validateMovieId), deleteMovie);
 
 module.exports = moviesRouter;
