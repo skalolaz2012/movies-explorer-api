@@ -12,8 +12,7 @@ const validateCreateUser = {
       'string.email': 'Введите корректный email',
       'any.required': 'Поле email не должно быть пустым!',
     }),
-    password: Joi.string().required().min(6).messages({
-      'string.min': 'Пароль должен быть не менее 6 символов',
+    password: Joi.string().required().messages({
       'any.required': 'Пароль не может быть пустым!',
     }),
   }),
@@ -38,7 +37,7 @@ const validateUserId = {
   params: Joi.object({
     userId: Joi.string().hex().length(24)
       .messages({
-        'any.length': 'Id указан неверно',
+        'any.length': 'Id пользователя указан неверно',
       }),
   }),
 };
@@ -53,7 +52,7 @@ const validateDataOfMovies = {
       .messages({
         'any.required': 'Поле "Режиссёр" обязательное!',
       }),
-    duration: Joi.string().required()
+    duration: Joi.number().required()
       .messages({
         'any.required': 'Поле "Продолжительность" обязательное!',
       }),
@@ -77,7 +76,7 @@ const validateDataOfMovies = {
       .messages({
         'any.required': 'Должна быть ссылка!',
       }),
-    movieId: Joi.string().required()
+    movieId: Joi.number().required()
       .messages({
         'any.required': 'Поле "Id" обязательное!',
       }),
@@ -96,7 +95,7 @@ const validateMovieId = {
   params: Joi.object({
     cardId: Joi.string().required().hex().length(24)
       .messages({
-        'any.required': 'Id указан неверно',
+        'any.length': 'Id фильма указан неверно',
       }),
   }),
 };

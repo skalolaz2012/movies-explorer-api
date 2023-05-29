@@ -16,7 +16,6 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, 'Поле "Пароль" должно быть заполнено'],
-      minlength: [6, 'Минимальная длина пароля - не менее 6 символов'],
       select: false,
     },
     name: {
@@ -26,9 +25,7 @@ const userSchema = new mongoose.Schema(
       maxlength: [30, 'Максимальная длина поля "name" - 30'],
     },
   },
-  {
-    versionKey: false,
-  },
+  { versionKey: false },
 );
 
 userSchema.statics.findUserByCredentials = function (email, password) {

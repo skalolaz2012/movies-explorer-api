@@ -15,7 +15,7 @@ router.post('/signup', celebrate(validateCreateUser), createUser);
 router.use('/users', auth, require('./users'));
 router.use('/movies', auth, require('./movies'));
 
-router.use('*', (req, res, next) => {
+router.use('*', auth, (req, res, next) => {
   next(new myError.NotFoundError(myError.NotFoundMsg));
 }); // несуществующий роут всегда должен быть после остальных роутов в конце
 

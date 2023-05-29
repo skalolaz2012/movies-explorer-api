@@ -13,12 +13,13 @@ const { limiter } = require('./middlewares/rateLimit');
 const {
   PORT = 3000,
   BASE_PATH,
+  DB
 } = process.env;
 
 const app = express();
 const routes = require('./routes/index');
 
-mongoose.connect('mongodb://127.0.0.1/bitfilmsdb');
+mongoose.connect(DB || 'mongodb://127.0.0.1/bitfilmsdb');
 
 /* метод use позволяет использовать middleware */
 app.use(bodyParser.json());

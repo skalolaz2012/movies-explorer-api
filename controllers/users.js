@@ -26,7 +26,13 @@ const editUser = (req, res, next) => {
     { new: true, runValidators: true },
   )
     .then((user) => checkUser(user, res))
-    .catch(next);
+    .catch((err) => {
+      if (err.code === 11000) {
+        next(new myError.AlreadyExistError(myError.AlreadyExistMsg));
+      } else {
+        next(err);
+      }
+    });
 };
 
 module.exports = {
