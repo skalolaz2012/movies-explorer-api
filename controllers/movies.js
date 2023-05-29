@@ -1,6 +1,6 @@
 /* экспортируем модель со схемой в контроллер */
-const Movie = require("../models/movie");
-const myError = require("../errors");
+const Movie = require('../models/movie');
+const myError = require('../errors');
 
 const getMovies = (req, res, next) => {
   Movie.find({ owner: req.user._id })
@@ -17,7 +17,7 @@ const createMovie = (req, res, next) => {
       res.status(201).send(movie);
     })
     .catch((err) => {
-      if (err.name === "ValidationError") {
+      if (err.name === 'ValidationError') {
         next(new myError.BadRequestError(myError.BadRequestMsg));
       } else {
         next(err);

@@ -1,6 +1,6 @@
 /* экспортируем модель со схемой в контроллер */
-const User = require("../models/user");
-const myError = require("../errors");
+const User = require('../models/user');
+const myError = require('../errors');
 
 const checkUser = (user, res) => {
   if (!user) {
