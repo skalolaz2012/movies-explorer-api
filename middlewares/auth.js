@@ -9,7 +9,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    return next(new myError.AuthError(myError.NeedAuthMsg));
+    return next(new myError.AuthError(myError.AuthEmptyTokenMsg));
   }
 
   const token = extractBearerToken(authorization);

@@ -1,4 +1,5 @@
-const AuthMsg = 'Неверная почта или пароль';
+const AuthMsg = 'Вы ввели неправильный логин или пароль.';
+const AuthEmptyTokenMsg = 'При авторизации произошла ошибка. Токен не передан или передан не в том формате.';
 const NeedAuthMsg = 'Пожалуйста, авторизуйтесь';
 
 class AuthError extends Error {
@@ -8,4 +9,4 @@ class AuthError extends Error {
   }
 }
 
-module.exports = { AuthError, AuthMsg, NeedAuthMsg };
+module.exports = { AuthError, AuthMsg, NeedAuthMsg, AuthEmptyTokenMsg };

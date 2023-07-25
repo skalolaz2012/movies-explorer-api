@@ -1,4 +1,4 @@
-const NotFoundMsg = 'Ресурс не существует';
+const NotFoundMsg = '404 Страница по указанному маршруту не найдена.';
 
 class NotFoundError extends Error {
   constructor(message) {
