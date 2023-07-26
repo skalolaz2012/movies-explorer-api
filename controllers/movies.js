@@ -5,7 +5,6 @@ const { SuccessDel } = require('../utils/constants');
 
 const getMovies = (req, res, next) => {
   Movie.find({ owner: req.user._id })
-    .orFail(() => new myError.NotFoundError(myError.NotFoundMsg))
     .then((movies) => res.send(movies))
     .catch(next);
 };

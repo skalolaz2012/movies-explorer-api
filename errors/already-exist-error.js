@@ -1,4 +1,4 @@
-const AlreadyExistMsg = 'Пользователь уже существует';
+const AlreadyExistMsg = 'Пользователь с таким email уже существует.';
 
 class AlreadyExistError extends Error {
   constructor(message) {
